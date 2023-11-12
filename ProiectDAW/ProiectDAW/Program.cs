@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ProiectDAW.Data;
+using ProiectDAW.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
