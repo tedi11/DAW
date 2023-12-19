@@ -5,7 +5,7 @@
 namespace ProiectDAW.Migrations
 {
     /// <inheritdoc />
-    public partial class terooog : Migration
+    public partial class terog4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
