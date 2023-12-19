@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ProiectDAW.Models;
 
 namespace ProiectDAW.Models
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext>
         options)
@@ -23,7 +24,7 @@ namespace ProiectDAW.Models
             // definire primary key compus
             modelBuilder.Entity<Member>()
             .HasKey(ac => new { ac.UserId, ac.ProjectId });
-            // definire relatii cu modelele Category si Article (FK)
+            // definire relatii cu modelele proiect si user (FK)
             modelBuilder.Entity<Member>()
             .HasOne(ac => ac.User)
             .WithMany(ac => ac.Members)
