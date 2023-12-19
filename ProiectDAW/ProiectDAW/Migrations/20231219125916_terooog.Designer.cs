@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProiectDAW.Models;
 
@@ -11,9 +12,11 @@ using ProiectDAW.Models;
 namespace ProiectDAW.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231219125916_terooog")]
+    partial class terooog
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,8 +92,8 @@ namespace ProiectDAW.Migrations
                     b.Property<int>("TaskId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserID")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
 
                     b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");
@@ -127,9 +130,6 @@ namespace ProiectDAW.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("ManagerId")
                         .HasColumnType("int");
 
@@ -138,8 +138,6 @@ namespace ProiectDAW.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.ToTable("Projects");
                 });
@@ -225,13 +223,6 @@ namespace ProiectDAW.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ProiectDAW.Models.Project", b =>
-                {
-                    b.HasOne("ProiectDAW.Models.AppUser", null)
-                        .WithMany("Projects")
-                        .HasForeignKey("AppUserId");
-                });
-
             modelBuilder.Entity("ProiectDAW.Models.Task", b =>
                 {
                     b.HasOne("ProiectDAW.Models.Project", "Project")
@@ -254,8 +245,6 @@ namespace ProiectDAW.Migrations
                     b.Navigation("Coments");
 
                     b.Navigation("Members");
-
-                    b.Navigation("Projects");
 
                     b.Navigation("Tasks");
                 });
