@@ -44,30 +44,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Projects/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Projects/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Projects/IndexAdmin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXhBZG1pbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Projects/New.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcTmV3LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Projects/Show.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcU2hvdy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Projects/Users.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcVXNlcnMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -78,6 +54,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Tasks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Tasks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Tasks/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Tasks/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcU2hvdy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tudor/Desktop/DAW/ProiectDAW/ProiectDAW/Views/Users/Edit.cshtml]

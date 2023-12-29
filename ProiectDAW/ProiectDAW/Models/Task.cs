@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProiectDAW.Models
 {
@@ -23,7 +25,8 @@ namespace ProiectDAW.Models
 
         public string? UserId { get; set; } //punem string ca vine hash 
         public virtual AppUser? User { get; set; }
-
+        [NotMapped]
+        public IEnumerable<SelectListItem> Statuses { get; internal set; }
 
         public Task()
         {
