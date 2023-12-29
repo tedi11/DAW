@@ -1,5 +1,96 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@inject Microsoft.AspNetCore.Identity.UserManager<AppUser> _userManager
+
 @{
+    ViewBag.Title = "Users";
+}
+
+
+@if (ViewBag.Message != null)
+{
+    <h2 class="alert-success p-3 rounded-3 text-center mb-5">@ViewBag.Message</h2>
+}
+<br />
+
+<a id="back" href="/Projects/Show/@ViewBag.Project.Id"><i class="bi bi-arrow-90deg-left"></i></a>
+
+
+
+<h2 class="text-center mt-5">Users in this project:</h2>
+<br />
+
+@foreach (var user in ViewBag.Users)
+{
+    <div class="card">
+
+
+        <div class="card-body">
+            @if (user.UserId == ViewBag.Project.UserId)
+            {
+                <h3 class="card-title  py-3 px-3 rounded-2">@user.User.Email</h3>
+                <small>Owner</small>
+            }
+            else
+            {
+
+                <h3 class="card-title alert-info py-3 px-3 rounded-2">@user.User.Email</h3>
+                @if (_userManager.GetUserId(User) == ViewBag.Project.UserId || User.IsInRole("Admin")
+               || _userManager.GetUserId(User) == user.UserId)
+                {
+                    <form method="post" action="/Projects/UserDelete/@user.Id/@user.UserId/@user.ProjectId">
+                        <button class="btn " type="submit"><i class="bi bi-trash"></i>Remove User</button>
+                    </form>
+                }
+            }
+
+
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+}
+
+@if (_userManager.GetUserId(User) == ViewBag.Project.UserId || User.IsInRole("Admin"))
+{
+    <h3>Search </h3>
+
+    <form method="GET">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control"
+                   placeholder="Search topics or keywords" name="search"
+                   value="@ViewBag.SearchString">
+            <button class="btn btn-outline-success"
+                    type="submit">
+                Search
+            </button>
+        </div>
+    </form>
+
+
+    @foreach (ProiectDAW.Models.AppUser user in ViewBag.AllUsers)
+    {
+        <div class="card">
+
+
+            <div class="card-body">
+
+                <h3 class="card-title alert-info py-3 px-3 rounded-2">@user.Email</h3>
+
+                <form method="post" action="/Projects/Users/@ViewBag.Project.Id">
+                    <input type="hidden" name="UserId" value="@user.Id" />
+                    <input type="hidden" name="ProjectId" value="@ViewBag.Project.Id" />
+                    <button type="submit">Add user in project team</button>
+                </form>
+
+            </div>
+
+
+
+        </div>
+
+        <br />
+        <br />
+    }
+
 }
