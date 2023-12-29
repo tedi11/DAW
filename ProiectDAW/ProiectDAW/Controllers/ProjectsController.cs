@@ -245,22 +245,11 @@ namespace ProiectDAW.Controllers
             if (users_ids.Contains(userid) || User.IsInRole("Admin"))
             {
 
-                var users_search = db.Users.Where(a => 1 == 0);
-                var search = "";
-                // cautare
-                if (Convert.ToString(HttpContext.Request.Query["search"]) != null)
-                {
-                    search = Convert.ToString(HttpContext.Request.Query["search"]).Trim();
-                    users_search = db.Users.Where(usn => usn.UserName.Contains(search) &&
-                                                        !users_ids.Contains(usn.Id) &&
-                                                        !usn.UserName.EndsWith("@test.com"))
-                                            .OrderBy(a => a.UserName);
-                }
-
                 var project = db.Projects.Find(id);
                 ViewBag.Users = users;
                 ViewBag.Project = project;
-                ViewBag.AllUsers = users_search;
+                ViewBag.AllUsers = db.Users;
+                
                 return View();
             }
             else

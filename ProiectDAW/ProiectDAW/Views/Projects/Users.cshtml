@@ -33,8 +33,7 @@
             {
 
                 <h3 class="card-title alert-info py-3 px-3 rounded-2">@user.User.Email</h3>
-                @if (_userManager.GetUserId(User) == ViewBag.Project.UserId || User.IsInRole("Admin")
-               || _userManager.GetUserId(User) == user.UserId)
+                @if (_userManager.GetUserId(User) == ViewBag.Project.ManagerId || User.IsInRole("Admin")|| _userManager.GetUserId(User) == user.UserId)
                 {
                     <form method="post" action="/Projects/UserDelete/@user.Id/@user.UserId/@user.ProjectId">
                         <button class="btn " type="submit"><i class="bi bi-trash"></i>Remove User</button>
@@ -53,41 +52,40 @@
 
 @if (_userManager.GetUserId(User) == ViewBag.Project.ManagerId || User.IsInRole("Admin"))
 {
-    <h3>Search </h3>
-
-    <form method="GET">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control"
-                   placeholder="Search topics or keywords" name="search"
-                   value="@ViewBag.SearchString">
-            <button class="btn btn-outline-success"
-                    type="submit">
-                Search
-            </button>
-        </div>
-    </form>
+    <h3>ADĂUGARE USER LA PROIECT:</h3>
 
 
     @foreach (ProiectDAW.Models.AppUser user in ViewBag.AllUsers)
     {
-        <div class="card">
+        int ok = 1;
+        foreach (var utilizatorAdaugat in ViewBag.Users)
+        {
+            if (utilizatorAdaugat.UserId == user.Id)
+            {
+                ok = 0;
+            }
+            
+        }
+
+        if (ok == 1)
+        {
+            <div class="card">
 
 
-            <div class="card-body">
+                <div class="card-body">
 
-                <h3 class="card-title alert-info py-3 px-3 rounded-2">@user.Email</h3>
+                    <h3 class="card-title alert-info py-3 px-3 rounded-2">@user.Email</h3>
 
-                <form method="post" action="/Projects/Users/@ViewBag.Project.Id">
-                    <input type="hidden" name="UserId" value="@user.Id" />
-                    <input type="hidden" name="ProjectId" value="@ViewBag.Project.Id" />
-                    <button type="submit">Add user in project team</button>
-                </form>
+                    <form method="post" action="/Projects/Users/@ViewBag.Project.Id">
+                        <input type="hidden" name="UserId" value="@user.Id" />
+                        <input type="hidden" name="ProjectId" value="@ViewBag.Project.Id" />
+                        <button type="submit">Add user in project team</button>
+                    </form>
+
+                </div>
 
             </div>
-
-
-
-        </div>
+        }
 
         <br />
         <br />
