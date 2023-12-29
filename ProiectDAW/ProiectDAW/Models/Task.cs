@@ -14,10 +14,10 @@ namespace ProiectDAW.Models
         [Required(ErrorMessage = "Description Required")]
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
-        [Required(ErrorMessage = "Deadline Required")]
+        //[Required(ErrorMessage = "Deadline Required")]
         public DateTime Deadline { get; set; }
-        [Required(ErrorMessage = "Content Required")]
-        public string Content { get; set; }
+        //[Required(ErrorMessage = "Content Required")]
+        //public string Content { get; set; }
         public string Status { get; set; }
         public int ProjectId { get; set; }
         public virtual Project Project { get; set; }
@@ -28,12 +28,12 @@ namespace ProiectDAW.Models
         [NotMapped]
         public IEnumerable<SelectListItem> Statuses { get; internal set; }
 
-        public Task()
+/*        public Task()
         {
             StartDate = DateTime.Now;
             Status = "Not Started";
             Content = "Placeholder"; //TODO
-        }
+        }*/
 
 
     }
