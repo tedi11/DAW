@@ -10,7 +10,7 @@ namespace ProiectDAW.Controllers
 {
     public class CommentsController : Controller
     {
-
+        //test
         private readonly ApplicationDbContext db;
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
