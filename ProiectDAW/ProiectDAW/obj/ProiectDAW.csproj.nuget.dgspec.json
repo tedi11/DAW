@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ingeaua\\Desktop\\AN 2\\SEM 1\\DAW\\DAW\\ProiectDAW\\ProiectDAW\\ProiectDAW.csproj": {}
+    "C:\\Users\\tudor\\Desktop\\DAW\\ProiectDAW\\ProiectDAW\\ProiectDAW.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ingeaua\\Desktop\\AN 2\\SEM 1\\DAW\\DAW\\ProiectDAW\\ProiectDAW\\ProiectDAW.csproj": {
+    "C:\\Users\\tudor\\Desktop\\DAW\\ProiectDAW\\ProiectDAW\\ProiectDAW.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ingeaua\\Desktop\\AN 2\\SEM 1\\DAW\\DAW\\ProiectDAW\\ProiectDAW\\ProiectDAW.csproj",
+        "projectUniqueName": "C:\\Users\\tudor\\Desktop\\DAW\\ProiectDAW\\ProiectDAW\\ProiectDAW.csproj",
         "projectName": "ProiectDAW",
-        "projectPath": "C:\\Users\\ingeaua\\Desktop\\AN 2\\SEM 1\\DAW\\DAW\\ProiectDAW\\ProiectDAW\\ProiectDAW.csproj",
-        "packagesPath": "C:\\Users\\ingeaua\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ingeaua\\Desktop\\AN 2\\SEM 1\\DAW\\DAW\\ProiectDAW\\ProiectDAW\\obj\\",
+        "projectPath": "C:\\Users\\tudor\\Desktop\\DAW\\ProiectDAW\\ProiectDAW\\ProiectDAW.csproj",
+        "packagesPath": "C:\\Users\\tudor\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tudor\\Desktop\\DAW\\ProiectDAW\\ProiectDAW\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ingeaua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tudor\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

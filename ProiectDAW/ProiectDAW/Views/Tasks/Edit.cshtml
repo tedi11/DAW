@@ -1,0 +1,63 @@
+﻿@model ProiectDAW.Models.Task
+
+<h2 class="text-center mt-5">Edit task</h2>
+<br />
+@if (ViewBag.Message != null)
+{
+    <h2 class="alert-success p-3 rounded-3 text-center mb-5">@ViewBag.Message</h2>
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            @using (Html.BeginForm(actionName: "Edit", controllerName: "Tasks",
+            method: FormMethod.Post,
+            routeValues: new { id = Model.Id }))
+            {
+
+                @if (TempData["messageerr"] != null)
+                {
+                    <p class="alert-danger p-3 rounded-3 mb-5">@TempData["messageerr"]</p>
+                }
+
+                @Html.Label("Title", "Task Title")
+                <br />
+                @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+                <br />
+                @Html.EditorFor(m => m.Title, new { htmlAttributes = new { @class = "form-control" } })
+
+                <br />
+                <br />
+
+                @Html.Label("Description", "Task Description")
+                <br />
+                @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
+                <br />
+                @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control" } })
+
+                <br />
+                <br />
+                <input type="hidden" name="Status" value=@Model.Status />
+
+                @Html.Label("StartDate", "Task Start Date")
+                <br />
+                @Html.Editor("StartDate", new { htmlAttributes = new { @class = "form-control" } })
+
+                <br />
+                <br />
+
+
+                @Html.Label("EndDate", "Task End Date")
+                <br />
+                @Html.Editor("EndDate", new { htmlAttributes = new { @class = "form-control" } })
+
+                <br />
+                <br />
+                @Html.ValidationSummary()
+                ;
+                <button class="btn btn-sm btn-success" type="submit">Update task</button>
+
+            }
+        </div>
+    </div>
+</div>

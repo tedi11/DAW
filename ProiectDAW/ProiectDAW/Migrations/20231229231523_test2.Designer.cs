@@ -12,8 +12,8 @@ using ProiectDAW.Data;
 namespace ProiectDAW.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231229171812_ingi")]
-    partial class ingi
+    [Migration("20231229231523_test2")]
+    partial class test2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -246,16 +246,13 @@ namespace ProiectDAW.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TaskId");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -330,7 +327,6 @@ namespace ProiectDAW.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -406,13 +402,13 @@ namespace ProiectDAW.Migrations
                         .WithMany("Comments")
                         .HasForeignKey("TaskId");
 
-                    b.HasOne("ProiectDAW.Models.AppUser", "Users")
+                    b.HasOne("ProiectDAW.Models.AppUser", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UsersId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Task");
 
-                    b.Navigation("Users");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ProiectDAW.Models.Member", b =>

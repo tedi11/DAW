@@ -13,7 +13,7 @@ namespace ProiectDAW.Models
         public string Title { get; set; }
         [Required(ErrorMessage = "Description Required")]
         public string Description { get; set; }
-        public string Status { get; set; }
+        public string? Status { get; set; }
 
 
         public DateTime StartDate { get; set; }

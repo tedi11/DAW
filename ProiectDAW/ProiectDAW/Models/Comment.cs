@@ -10,7 +10,7 @@ namespace ProiectDAW.Models
         public int? TaskId { get; set; }
         public virtual Task? Task { get; set; }
         public string? UserId { get; set; }
-        public virtual AppUser? Users { get; set; }
+        public virtual AppUser? User { get; set; }
 
 
     }

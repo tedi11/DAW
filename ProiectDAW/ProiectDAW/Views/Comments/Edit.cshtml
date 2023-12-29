@@ -1,0 +1,31 @@
+﻿@model ProiectDAW.Models.Comment
+
+<h2 class="text-center mt-5">Edit Comment</h2>
+<br />
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            @using (Html.BeginForm(actionName: "Edit", controllerName: "Comments",
+            method: FormMethod.Post,
+            routeValues: new { id = Model.Id }))
+            {
+
+
+
+                @Html.Label("Content", "Edit your comment")
+                <br />
+                @Html.ValidationMessageFor(m => m.Message, null, new { @class = "text-danger" })
+                <br />
+                @Html.EditorFor(m => m.Message, new { htmlAttributes = new { @class = "form-control" } })
+
+
+
+                <button class="btn btn-sm btn-success" type="submit">Update content</button>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+

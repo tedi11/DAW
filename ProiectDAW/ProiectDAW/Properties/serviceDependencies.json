@@ -2,7 +2,7 @@
   "dependencies": {
     "mssql1": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:bd-proiect",
+      "connectionId": "ConnectionStrings:BazaDupaProiecte",
       "dynamicId": null
     }
   }

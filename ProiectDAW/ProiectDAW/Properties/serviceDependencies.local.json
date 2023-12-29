@@ -4,7 +4,7 @@
       "serviceConnectorResourceId": "",
       "secretStore": null,
       "type": "mssql.local",
-      "connectionId": "ConnectionStrings:bd-proiect",
+      "connectionId": "ConnectionStrings:BazaDupaProiecte",
       "dynamicId": null
     }
   }

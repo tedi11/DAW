@@ -1,0 +1,260 @@
+﻿@model ProiectDAW.Models.Task
+@inject Microsoft.AspNetCore.Identity.UserManager<AppUser> _userManager
+<div class="d-flex justify-content-center">
+
+    <a id="back" href="/Projects/Show/@Model.ProjectId"><i class="bi bi-arrow-90deg-left"></i></a>
+
+
+</div>
+
+@{
+    ViewBag.Title = Model.Title;
+
+    <head>
+        <link rel="stylesheet" href="~/css/tasks.css">
+    </head>
+
+}
+
+@if (TempData["message"] != null)
+{
+    <div class="alert @TempData["messageType"]">
+        @TempData["message"]
+    </div>
+}
+
+<div class="card">
+
+    <div class="card-body">
+
+        <h3 class="card-title  py-3 px-3 rounded-2 text-center">@Model.Title</h3>
+        @if (Model.User is not null)
+        {
+            <div class="card-text ">@Model.User.UserName</div>
+        }
+        <div class="card-text">@Model.Description</div>
+        <div class="card-text">@Model.StartDate</div>
+        <div class="card-text">@Model.Deadline</div>
+        <div class="card-text">@Model.Status</div>
+
+
+    </div>
+
+
+    @if (Model.Project.ManagerId == _userManager.GetUserId(User) || User.IsInRole("Admin"))
+    {
+        <div id="options">
+
+
+            <li class="dropdown">
+                <button type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
+
+                    <li>
+                        <a class="dropdown-item" href="/Tasks/Edit/@Model.Id"><i class="bi bi-pencil-square"></i> Edit</a>
+                    </li>
+                    <li>
+                        <form method="post" action="/Tasks/Delete/@Model.Id">
+                            <button class="dropdown-item" type="submit"><i class="bi bi-trash"></i> Delete</button>
+                        </form>
+                    </li>
+
+
+
+
+                </ul>
+            </li>
+
+
+        </div>
+
+
+        <div class="d-flex flex-row justify-content-center p-3 border-1 border-top">
+            <form method="POST" asp-controller="Tasks" asp-action="AddUser">
+                <div class="d-flex flex-row justify-content-center p-3 border-1 border-top">
+                    <div>
+                        <input type="hidden" name="TaskId" value=@Model.Id />
+                        <select name="UserId" class="form-control">
+                            @if (Model.User is null)
+                            {
+                                <option selected>Add a user for this task</option>
+
+                                @foreach (var user in ViewBag.Users)
+                                {
+                                    <option value=@user.UserId>@user.User.UserName</option>
+                                }
+                            }
+                            else
+                            {
+                                @foreach (var user in ViewBag.Users)
+                                {
+                                    if (Model.UserId == user.UserId)
+                                    {
+                                        <option selected value=@user.UserId>@user.User.UserName</option>
+                                    }
+                                    else
+                                    {
+                                        <option value=@user.UserId>@user.User.UserName</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <input type="submit" style="color:var(--Lilac)" value="+" />
+
+                </div>
+            </form>
+
+
+
+
+        </div>
+    }
+
+    <div class="d-flex flex-row justify-content-center p-3 border-1 border-top">
+
+
+
+        @using (Html.BeginForm(actionName: "ChangeStatus", controllerName: "Tasks",
+        method: FormMethod.Post,
+        routeValues: new { id = Model.Id }))
+        {
+            <div class="d-flex flex-row justify-content-center p-3 border-1 border-top">
+                <input type="hidden" name="TaskId" value=@Model.Id />
+                @Html.Label("Status", "Task Status")
+                @Html.DropDownList("newStatus", new SelectList(Model.Statuses, "Value", "Text", ViewBag.CurrentStatus), null, new { @class = "form-control" }) 
+                <input type="submit" class="" value="+" />
+            </div>
+
+
+
+
+        }
+
+
+
+    </div>
+
+
+
+</div>
+
+<br />
+<br />
+
+@* Afisare tskuri impreuna cu butoanele de editare si stergere *@
+@if (Model.Comments is not null)
+{
+    @foreach (var comm in Model.Comments)
+    {
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-2"></div>
+
+                <div class="col-md-8 comm-container">
+
+                    <div>
+
+                        <p>@comm.Message</p>
+                        @if (comm.UserId is not null)
+                        {
+                            <small>@comm.User.Email</small>
+
+                            <br />
+                            ///aici posibil sa faca urit
+                        }
+
+                    </div>
+                    <br>
+                    @if (comm.Task.Project is not null)
+                    {
+                        @if (comm.UserId == _userManager.GetUserId(User) || User.IsInRole("Admin")
+                       || comm.Task.Project.ManagerId == _userManager.GetUserId(User))
+                        {
+                            <div class="d-flex flex-row justify-content-space-between p-3 border-1 border-top">
+
+                                <div>
+
+                                    <a class="btn btn-outline-primary" href="/Comments/Edit/@comm.Id"><i class="bi bi-pencil-square"></i>Edit Comment</a>
+
+                                </div>
+
+
+
+                                <div>
+
+                                    <form method="post" action="/Comments/Delete/@comm.Id">
+
+                                        <button class="btn btn-outline-danger" type="submit"><i class="bi bi-trash"></i>Delete Comment</button>
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        }
+                    }
+
+                    <br />
+
+                </div>
+
+                <div class="col-md-2"></div>
+
+            </div>
+
+        </div>
+    }
+}
+else
+{
+    Console.WriteLine("dasd");
+}
+
+@* Afisarea formularului in care se poate adauga un comentariu *@
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+
+            <div class="card">
+
+                <form method="post" action="/Tasks/Show/@Model.Id">
+
+                    <div class="card-body">
+
+                        <input type="hidden" name="TaskId" value="@Model.Id" />
+
+
+                        <label>Post a comment</label>
+                        <br />
+                        @Html.ValidationMessage("Content", null, new { @class = "text-danger"})
+
+                        <br />
+                        <textarea class="form-control" name="Message"></textarea>
+
+
+                        <br />
+
+                        <button class="btn btn-success " type="submit">Add a comment</button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2"></div>
+
+    </div>
+
+</div>
