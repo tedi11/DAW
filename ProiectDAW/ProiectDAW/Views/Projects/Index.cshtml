@@ -54,9 +54,9 @@ else
 
                         <div class="prog-title">@project.Name</div>
 
-                        @if (project.ManagerEmail is not null)
+                        @if (project.User is not null)
                         {
-                            <div id="username"><i class="bi bi-person"></i>@project.ManagerEmail</div>
+                            <div id="username"><i class="bi bi-person"></i>@project.User.UserName</div>
                         }
 
                     </div>

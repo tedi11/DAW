@@ -16,17 +16,18 @@
 
 
 
-
 <div id="project-view" class="card col-md-3 col-lg-2">
+
+
 
     <div class="card-body">
 
         <h3>@Model.Name</h3>
 
         <div class="d-flex justify-content-between flex-row mt-5">
-            @if (Model.ManagerEmail is not null)
+            @if (Model.User is not null)
             {
-                <div><i class="bi bi-globe"></i>@Model.ManagerEmail</div>
+                <div><i class="bi bi-globe"></i>@Model.User.UserName</div>
             }
 
         </div>
@@ -71,7 +72,7 @@
 </div>
 
 
-@* Afisarea formular adaugare *@
+@* Afisarea formularului in care se poate adauga un task *@
 @if (Model.ManagerId == _userManager.GetUserId(User) || User.IsInRole("Admin"))
 {
 
@@ -96,6 +97,9 @@
                 <br />
                 <textarea class="form-control" name="Title"></textarea>
                 <br /><br />
+                <label>Task description</label>
+                <br />
+                <textarea class="form-control" name="Description"></textarea>
                 <br /><br />
 
                 <label>Start date</label>
@@ -115,15 +119,6 @@
 
 
 }
-
-
-
-
-<div id="id_user_sesiune" class="hide">
-    @_userManager.GetUserId(User)
-</div>
-
-
 
 @* Afisare tskuri impreuna cu butoanele de editare si stergere *@
 @if (Model.Tasks is not null)
@@ -184,9 +179,6 @@
                     <br />
 
                 </div>
-
-
-
 
             }
 

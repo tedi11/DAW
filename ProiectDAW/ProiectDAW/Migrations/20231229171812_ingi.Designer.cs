@@ -12,7 +12,7 @@ using ProiectDAW.Data;
 namespace ProiectDAW.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231229165234_ingi")]
+    [Migration("20231229171812_ingi")]
     partial class ingi
     {
         /// <inheritdoc />
@@ -291,12 +291,6 @@ namespace ProiectDAW.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ManagerEmail")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ManagerId")
                         .HasColumnType("nvarchar(max)");
 
@@ -304,9 +298,12 @@ namespace ProiectDAW.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Projects");
                 });
@@ -439,9 +436,11 @@ namespace ProiectDAW.Migrations
 
             modelBuilder.Entity("ProiectDAW.Models.Project", b =>
                 {
-                    b.HasOne("ProiectDAW.Models.AppUser", null)
+                    b.HasOne("ProiectDAW.Models.AppUser", "User")
                         .WithMany("Projects")
-                        .HasForeignKey("AppUserId");
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ProiectDAW.Models.Task", b =>

@@ -20,9 +20,9 @@
                     <div>
                         <p><i class="bi bi-card-list"> </i> Project: @project.Name</p>
 
-                        @if (@project.ManagerEmail != null)
+                        @if (@project.User.UserName != null)
                         {
-                            <p><i class="bi bi-person"> </i> Username: @project.ManagerEmail</p>
+                            <p><i class="bi bi-person"> </i> Username: @project.User.UserName</p>
                         }
 
                     </div>

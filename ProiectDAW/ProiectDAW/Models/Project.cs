@@ -7,7 +7,7 @@ namespace ProiectDAW.Models
         [Key]
         public int Id { get; set; }
         public string? ManagerId { get; set; }
-        public string? ManagerEmail { get; set; }
+        public virtual AppUser? User { get; set; }
 
         [Required(ErrorMessage = "Teapa, pune nume")]
         public string Name { get; set; }

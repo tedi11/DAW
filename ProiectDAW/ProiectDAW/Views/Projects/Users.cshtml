@@ -24,7 +24,7 @@
 
 
         <div class="card-body">
-            @if (user.UserId == ViewBag.Project.UserId)
+            @if (user.UserId == ViewBag.Project.ManagerId)
             {
                 <h3 class="card-title  py-3 px-3 rounded-2">@user.User.Email</h3>
                 <small>Owner</small>
@@ -51,7 +51,7 @@
     <br />
 }
 
-@if (_userManager.GetUserId(User) == ViewBag.Project.UserId || User.IsInRole("Admin"))
+@if (_userManager.GetUserId(User) == ViewBag.Project.ManagerId || User.IsInRole("Admin"))
 {
     <h3>Search </h3>
 

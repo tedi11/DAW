@@ -33,6 +33,8 @@ namespace ProiectDAW.Controllers
 
             var projects = db.Projects.Include("User").Where(proj => proj_ids.Contains(proj.Id)).OrderBy(c => c.Name);
 
+            Console.WriteLine(projects);
+
             string[] icons = { "bi-bounding-box", "bi-brightness-high-fill", "bi-bell", "bi-bookmarks-fill", "bi-basket3-fill", "bi-arrow-down-up", "bi-award" };
 
             ViewBag.Icons = icons;
