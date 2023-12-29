@@ -1,5 +1,188 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ProiectDAW.Models.Project
+@inject Microsoft.AspNetCore.Identity.UserManager<AppUser> _userManager
+
 @{
+    ViewBag.Title = @Model.Name;
+
+    <head>
+        <link rel="stylesheet" href="~/css/projects.css">
+    </head>
+}
+
+
+
+<a id="back" href="/Projects/Index/"><i class="bi bi-arrow-90deg-left"></i></a>
+
+
+
+
+<div id="project-view" class="card col-md-3 col-lg-2">
+
+
+
+    <div class="card-body">
+
+        <h3>@Model.Name</h3>
+
+        <div class="d-flex justify-content-between flex-row mt-5">
+            @if (Model.User is not null)
+            {
+                <div><i class="bi bi-globe"></i>@Model.User.UserName</div>
+            }
+
+        </div>
+
+    </div>
+    <div id="options">
+
+
+        <li class="dropdown">
+            <button type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-three-dots"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
+                @if (Model.ManagerId == _userManager.GetUserId(User) || User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a class="dropdown-item" href="/Projects/Edit/@Model.Id"><i class="bi bi-pencil-square"></i> Edit</a>
+                    </li>
+                    <li>
+                        <form method="post" action="/Projects/Delete/@Model.Id">
+                            <button class="dropdown-item" type="submit"><i class="bi bi-trash"></i> Delete</button>
+                        </form>
+                    </li>
+                }
+                <li>
+                    <a class="dropdown-item" href="/Projects/Users/@Model.Id"> <i class="bi bi-people"></i> Users</a>
+                </li>
+
+
+            </ul>
+        </li>
+
+
+    </div>
+
+    <div id="tasks-switch" class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+        <label class="form-check-label" for="flexSwitchCheckDefault">Show only my tasks</label>
+    </div>
+
+
+</div>
+
+
+@* Afisarea formularului in care se poate adauga un task *@
+@if (Model.ManagerId == _userManager.GetUserId(User) || User.IsInRole("Admin"))
+{
+
+
+
+    <div id="add-task-view" class="card col-md-3 col-lg-2">
+
+        <form method="post" action="/Projects/Show/@Model.Id">
+
+            <div class="card-body">
+                @if (TempData["messageerr"] != null)
+                {
+                    <p class="alert-danger p-3 rounded-3 mb-5">@TempData["messageerr"]</p>
+                }
+                <input type="hidden" name="ProjectId" value="@Model.Id" />
+
+                <input type="hidden" name="Status" value="Not started" />
+
+                <lable>Task title</lable>
+                <br />
+                @Html.ValidationMessageFor((m => m.Name ), null, new { @class = "text-danger"})
+                <br />
+                <textarea class="form-control" name="Title"></textarea>
+                <br /><br />
+                <label>Task description</label>
+                <br />
+                <textarea class="form-control" name="Description"></textarea>
+                <br /><br />
+
+                <label>Start date</label>
+                <input type="date" name="StartDate" />
+                <br />
+                <label>End date</label>
+                <input type="date" name="EndDate" />
+                <br /><br />
+
+                <button class="btn btn-success " type="submit">Add a task</button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+}
+
+@* Afisare tskuri impreuna cu butoanele de editare si stergere *@
+@if (Model.Tasks is not null)
+{
+
+    <div class="container">
+        <div class="row">
+            @foreach (var task in Model.Tasks)
+            {
+                <div class="col-md-4 col-lg-3 taskuri-asoc"></div>
+
+                <div class="col-md-8 col-lg-9 taskuri">
+
+                    <div>
+
+                        <p>@task.Title</p>
+                        <small>@task.Status</small><br />
+                        @if (task.User is not null)
+                        {
+                            <div class="hide id_user_task">
+                                @task.UserId
+                            </div>
+                            <small>@task.User.UserName</small>
+                        }
+                        else
+                        {
+                            <div class="hide id_user_task">
+                            </div>
+                        }
+                    </div>
+                    <br>
+
+                    <div class="d-flex">
+                        @if (Model.ManagerId == _userManager.GetUserId(User) || User.IsInRole("Admin"))
+                        {
+                            <div>
+
+                                <a class="btn btn-outline-primary" href="/Tasks/Edit/@task.Id"><i class="bi bi-pencil-square"></i>Edit task</a>
+
+                            </div>
+
+                            <div>
+
+                                <form method="post" action="/Tasks/Delete/@task.Id">
+
+                                    <button class="btn btn-outline-danger" type="submit"><i class="bi bi-trash"></i>Delete Task</button>
+
+                                </form>
+
+                            </div>
+                        }
+                        <div>
+                            <a class="btn btn-success" href="/Tasks/Show/@task.Id">Show Task</a>
+                        </div>
+                        <br />
+                    </div>
+
+                    <br />
+
+                </div>
+
+            }
+
+        </div>
+
+    </div>
 }

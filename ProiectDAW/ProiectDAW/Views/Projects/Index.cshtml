@@ -1,5 +1,72 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+
 @{
+    ViewBag.Title = "Projects";
+    <head>
+        <link rel="stylesheet" href="~/css/projects.css">
+    </head>
+}
+
+@if (ViewBag.Message != null)
+{
+    <h2 class="alert-success p-3 rounded-3 text-center mb-5">@ViewBag.Message</h2>
+}
+
+
+@if (ViewBag.Projects is int)
+{
+    <h3 class="display-4 text-center">There are no projects to display. Would you like to add one?</h3>
+    <br />
+    <div class="d-flex justify-content-center">
+        <a class="btn" href="/Projects/New">Add a project!</a>
+    </div>
+}
+else
+{
+
+    <br />
+    <br />
+
+    <div class="container-fluid">
+        <div class="d-flex justify-content-evenly">
+            <h2 class="text-center">Here's a list of your projects:</h2>
+
+            <a class="btn" href="/Projects/New"><i class="bi bi-plus-circle"></i> Add a new project!</a>
+
+        </div>
+    </div>
+
+    <div class="container projects-container col">
+        <div class="row ">
+
+            @foreach (ProiectDAW.Models.Project project in ViewBag.Projects)
+            {
+
+                int num = project.Id % ViewBag.Icons.Length;
+
+                <a class=" card justify-content-center col-sm-6 col-md-4 col-lg-3 " href="/Projects/Show/@project.Id">
+
+
+
+                    <div class="card-body justify-content-center">
+                        <i class="bi @(ViewBag.Icons[num])"></i>
+
+                        <div class="prog-title">@project.Name</div>
+
+                        @if (project.User is not null)
+                        {
+                            <div id="username"><i class="bi bi-person"></i>@project.User.UserName</div>
+                        }
+
+                    </div>
+s
+                </a>
+            }
+        </div>
+
+    </div>
+
+
+
 }
