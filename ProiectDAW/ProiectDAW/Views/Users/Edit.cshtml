@@ -23,7 +23,7 @@
     <br />
 
     <i class="bi bi-phone"></i>
-    @Html.Label("PhoneNumber", "Phone number")
+    @Html.Label("PhoneNumber", "Număr telefon")
 
     <br />
 
@@ -32,12 +32,12 @@
     <br />
  
     <i class="bi bi-card-list"></i>
-    <label>Select user role</label>
+    <label>Alege rol user</label>
     @Html.DropDownList("newRole", new SelectList(Model.AllRoles, "Value", "Text", ViewBag.UserRole), null, new { @class = "form-control" })
 
     <br />
 
-    <button class="btn btn-sm btn-success" type="submit">Editare user</button>
+    <button class="btn btn-sm btn-success" type="submit">Confirmă editarea</button>
 
 
 }

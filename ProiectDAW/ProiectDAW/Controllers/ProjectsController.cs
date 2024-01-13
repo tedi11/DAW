@@ -99,7 +99,7 @@ namespace ProiectDAW.Controllers
 
                 db.Members.Add(project_data);
                 await db.SaveChangesAsync();
-                TempData["message"] = "The project wad added";
+                TempData["message"] = "Proiectul a fost adăugat";
                 return RedirectToAction("Index");
             }
             else
@@ -118,6 +118,7 @@ namespace ProiectDAW.Controllers
             
             if (user_ids.Contains(userid) || User.IsInRole("Admin"))
             {
+                ViewBag.Users = db.Members.Include("User").Where(user => user.ProjectId == id);
                 return View(project);
             }
             else
@@ -137,17 +138,22 @@ namespace ProiectDAW.Controllers
             {
                 TempData["messageerr"] = "Data de inceput trebuie sa fie inainte de deadline!";
                 flag = false;
+                return Redirect("/Projects/Show/" + task.ProjectId);
+            }
+            if (task.Title == null || task.Description == null)
+            {
+                flag = false;
             }
             if (ModelState.IsValid && flag)
             {
                 db.Tasks.Add(task);
                 db.SaveChanges();
-                return Redirect("/Projects/Show/" + task.ProjectId);
+                return Redirect("/Tasks/Show/" + task.Id);
             }
             else
             {
                 Project project = db.Projects.Include("Tasks").Include("User").Where(proj => proj.Id == task.ProjectId).First();
-                return View(project);
+                return Redirect("/Projects/Show/" + task.ProjectId);
             }
         }
 
@@ -178,7 +184,7 @@ namespace ProiectDAW.Controllers
             Project project = db.Projects.Find(id);
             if (project == null)
             {
-                TempData["message"] = "Database error!";
+                TempData["message"] = "Eroare BD!";
                 return View(requestProject);
 
             }
@@ -215,7 +221,7 @@ namespace ProiectDAW.Controllers
             Project project = db.Projects.Include("Tasks.Comments").Where(proj => proj.Id == id).First();
             if (project == null)
             {
-                TempData["message"] = "Database error!";
+                TempData["message"] = "Eroare BD!";
             }
             else
             {
@@ -224,7 +230,7 @@ namespace ProiectDAW.Controllers
                 {
                     db.Projects.Remove(project);
                     db.SaveChanges();
-                    TempData["message"] = "Project has been deleted.";
+                    TempData["message"] = "Proiectul a fost sters!";
                 }
                 else
                 {
@@ -268,7 +274,7 @@ namespace ProiectDAW.Controllers
             var project = db.Projects.Find(id);
             if (project == null)
             {
-                TempData["message"] = "Database error!";
+                TempData["message"] = "Eroare BD!";
                 return RedirectToAction("Index");
             }
             else
@@ -305,7 +311,7 @@ namespace ProiectDAW.Controllers
                 var project_id = user_project.ProjectId;
                 if (user_project == null)
                 {
-                    TempData["message"] = "Database error!";
+                    TempData["message"] = "Eroare BD!";
                     return Redirect("/Projects/Users/" + project_id);
                 }
                 else
@@ -314,13 +320,13 @@ namespace ProiectDAW.Controllers
                     db.SaveChanges();
                     if (user_project.UserId == _userManager.GetUserId(User))
                     {
-                        TempData["message"] = "You have left the project.";
+                        TempData["message"] = "Ai părăsit proiectul!";
                         return RedirectToAction("Index");
 
                     }
                     else
                     {
-                        TempData["message"] = "User has been removed.";
+                        TempData["message"] = "Utilizator scos.";
                         return Redirect("/Projects/Users/" + project_id);
                     }
                 }

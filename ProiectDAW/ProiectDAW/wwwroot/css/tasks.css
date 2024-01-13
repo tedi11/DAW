@@ -1,0 +1,11 @@
+h3 {
+    color: var(--Lilac);
+    font-size: xx-large;
+}
+
+.comm-container {
+    border: 1px solid var(--Lilac);
+    border-radius: 10px;
+    padding-top: 10px;
+    margin: 6px 5px;
+}

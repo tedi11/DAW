@@ -2,11 +2,29 @@
 @using ProiectDAW.Models
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
-@*@inject Microsoft.AspNetCore.Identity.UserManager<AppUser> _userManager*@
+@inject Microsoft.AspNetCore.Identity.UserManager<AppUser> _userManager
 
 <ul class="navbar-nav">
+
 @if (SignInManager.IsSignedIn(User))
 {
+
+    @if (User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link " asp-area="" asp-controller="Projects" asp-action="IndexAdmin" title="Manage">Listă proiecte</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link " asp-area="" asp-controller="Users" asp-action="Index" title="Manage">Listă Useri</a>
+        </li>
+
+    }
+
+    <li class="nav-item">
+        <a class="nav-link " asp-area="" asp-controller="Projects" asp-action="Index" title="Manage">Proiectele mele</a>
+    </li>
+
     <li class="nav-item">
         <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
     </li>

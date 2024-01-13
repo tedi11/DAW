@@ -130,7 +130,7 @@ namespace ProiectDAW.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser([FromForm] int TaskId, [FromForm] string userId) ///sa pun un user la munca (task)
+        public IActionResult AddUser([FromForm] int TaskId, [FromForm] string userId) ///sa pun un user task
         {
             var userid = _userManager.GetUserId(User);
             Task taskaux = db.Tasks.Include("Project").Where(a => a.Id == TaskId).First();
@@ -142,7 +142,7 @@ namespace ProiectDAW.Controllers
                         .Where(task => task.Id == TaskId && task.UserId == userId)
                         .Count() > 0)
                     {
-                        TempData["message"] = "User already has this task";
+                        TempData["message"] = "Utilizatorul deja are acest task";
                         TempData["messageType"] = "alert-danger";
                     }
                     else
@@ -153,12 +153,12 @@ namespace ProiectDAW.Controllers
                             task.UserId = userId;
                             db.SaveChanges();
 
-                            TempData["message"] = "User added to task";
+                            TempData["message"] = "Utilizator adaugat la task";
                             TempData["messageType"] = "alert-success";
                         }
                         else
                         {
-                            TempData["message"] = "Database error!";
+                            TempData["message"] = "Eroare BD!";
                             TempData["messageType"] = "alert-danger";
                         }
                     }
@@ -195,12 +195,12 @@ namespace ProiectDAW.Controllers
                         task.Status = newStatus;
                         db.SaveChanges();
 
-                        TempData["message"] = "Changed status";
+                        TempData["message"] = "Status schimbat";
                         TempData["messageType"] = "alert-success";
                     }
                     else
                     {
-                        TempData["message"] = "Database error!";
+                        TempData["message"] = "Eroare BD!";
                         TempData["messageType"] = "alert-danger";
                     }
                 }
@@ -227,7 +227,7 @@ namespace ProiectDAW.Controllers
                                         .First();
             if (task == null)
             {
-                TempData["message"] = "Database error!";
+                TempData["message"] = "Eroare BD!";
                 ViewBag.Message = TempData["message"];
                 return View("/Projects/Index");
             }
@@ -258,7 +258,7 @@ namespace ProiectDAW.Controllers
 
             if (task == null)
             {
-                TempData["message"] = "Database error!";
+                TempData["message"] = "Eroare BD!";
                 ViewBag.Message = TempData["message"];
                 return View(requestTask);
 
@@ -271,7 +271,7 @@ namespace ProiectDAW.Controllers
                 {
                     if (DateTime.Compare(requestTask.StartDate, requestTask.Deadline) >= 0)
                     {
-                        TempData["messageerr"] = "Start date must be before end date";
+                        TempData["messageerr"] = "Data de inceput trebuie sa fie inainte de cea de final";
                         return Redirect("/Tasks/Edit/" + id);
                     }
 
@@ -282,7 +282,7 @@ namespace ProiectDAW.Controllers
                         task.StartDate = requestTask.StartDate;
                         task.Deadline = requestTask.Deadline;
 
-                        TempData["message"] = "Task was updated!";
+                        TempData["message"] = "Task actualizat!";
                         db.SaveChanges();
                         return Redirect("/Projects/Show/" + task.ProjectId);
                     }

@@ -36,6 +36,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Comments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Comments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Comments/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Comments/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcU2hvdy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -60,6 +76,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Projects/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcU2hvdy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Projects/Users.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -74,6 +94,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Tasks/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Tasks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Tasks/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Tasks/Show.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFza3NcU2hvdy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ingeaua/Desktop/AN 2/SEM 1/DAW/DAW/ProiectDAW/ProiectDAW/Views/Users/Edit.cshtml]

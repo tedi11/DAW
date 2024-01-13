@@ -39,7 +39,7 @@ namespace ProiectDAW.Controllers
             AppUser user = db.Users.Find(id);
             if (user == null)
             {
-                TempData["message"] = "Database error!";
+                TempData["message"] = "Eroare BD!";
                 return RedirectToAction("Index");
             }
             else
@@ -58,7 +58,7 @@ namespace ProiectDAW.Controllers
             AppUser user = db.Users.Find(id);
             if (user == null)
             {
-                TempData["message"] = "Database error!";
+                TempData["message"] = "Eroare BD!";
                 return RedirectToAction("Index");
             }
             else
@@ -85,7 +85,7 @@ namespace ProiectDAW.Controllers
             AppUser user = db.Users.Find(id);
             if (user == null)
             {
-                TempData["message"] = "Database error!";
+                TempData["message"] = "Eroare BD!";
                 return RedirectToAction("Index");
             }
             else

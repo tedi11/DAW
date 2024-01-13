@@ -4,10 +4,11 @@
     "\\ProiectDAW",
     "\\ProiectDAW\\Controllers",
     "\\ProiectDAW\\Data",
+    "\\ProiectDAW\\Migrations",
     "\\ProiectDAW\\Models",
     "\\ProiectDAW\\Views",
-    "\\ProiectDAW\\Views\\Home"
+    "\\ProiectDAW\\Views\\Projects"
   ],
-  "SelectedNode": "\\ProiectDAW.sln",
+  "SelectedNode": "\\ProiectDAW\\Controllers\\ProjectsController.cs",
   "PreviewInSolutionExplorer": false
 }

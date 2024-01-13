@@ -12,7 +12,7 @@
             routeValues: new { id = Model.Id }))
             {
 
-                @Html.Label("Title", "Project Title")
+                @Html.Label("Title", "Nume proiect")
                 <br />
                 @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })
                 <br />
@@ -22,7 +22,7 @@
                 <br />
                 <br />
 
-                <button class="btn btn-sm btn-success" type="submit">Update project</button>
+                <button class="btn btn-sm btn-success" type="submit">Actualizează</button>
 
             }
         </div>

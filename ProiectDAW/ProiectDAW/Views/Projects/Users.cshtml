@@ -15,7 +15,7 @@
 
 
 
-<h2 class="text-center mt-5">Users in this project:</h2>
+<h2 class="text-center mt-5">Utilizatori din proiect:</h2>
 <br />
 
 @foreach (var user in ViewBag.Users)
@@ -27,7 +27,7 @@
             @if (user.UserId == ViewBag.Project.ManagerId)
             {
                 <h3 class="card-title  py-3 px-3 rounded-2">@user.User.Email</h3>
-                <small>Owner</small>
+                <small>Coordonator</small>
             }
             else
             {
@@ -36,7 +36,7 @@
                 @if (_userManager.GetUserId(User) == ViewBag.Project.ManagerId || User.IsInRole("Admin")|| _userManager.GetUserId(User) == user.UserId)
                 {
                     <form method="post" action="/Projects/UserDelete/@user.Id/@user.UserId/@user.ProjectId">
-                        <button class="btn " type="submit"><i class="bi bi-trash"></i>Remove User</button>
+                        <button class="btn " type="submit"><i class="bi bi-trash"></i>Șterge user</button>
                     </form>
                 }
             }
@@ -52,7 +52,7 @@
 
 @if (_userManager.GetUserId(User) == ViewBag.Project.ManagerId || User.IsInRole("Admin"))
 {
-    <h3>ADĂUGARE USER LA PROIECT:</h3>
+    <h3>Alege un utilizator pentru a-l adăuga:</h3>
 
 
     @foreach (ProiectDAW.Models.AppUser user in ViewBag.AllUsers)
@@ -79,7 +79,7 @@
                     <form method="post" action="/Projects/Users/@ViewBag.Project.Id">
                         <input type="hidden" name="UserId" value="@user.Id" />
                         <input type="hidden" name="ProjectId" value="@ViewBag.Project.Id" />
-                        <button type="submit">Add user in project team</button>
+                        <button type="submit">Adaugă</button>
                     </form>
 
                 </div>

@@ -1,8 +1,43 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+
+@{
+    ViewData["Title"] = "Home";
+    <head>
+        <link rel="stylesheet" href="~/css/home.css">
+    </head>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section id="landing" class="landing d-flex align-items-center">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up">O aplicație pentru managementul taskurilor creată cu multă iubire (și Pepsi Max)!</h1>
+                <div data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-center text-lg-start">
+                        @if (!SignInManager.IsSignedIn(User))
+                        {
+                            <a href="/Identity/Account/Register" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                                <span>Creează cont</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Projects/Index" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                                <span>Your projects</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 landing-img" data-aos="zoom-out" data-aos-delay="200">
+                <img src="~/pictures/echipa.png" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+
+</section>

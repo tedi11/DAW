@@ -1,5 +1,7 @@
 ﻿@model ProiectDAW.Models.Task
 
+<br/>
+
 <h2 class="text-center mt-5">Edit task</h2>
 <br />
 @if (ViewBag.Message != null)
@@ -20,7 +22,7 @@
                     <p class="alert-danger p-3 rounded-3 mb-5">@TempData["messageerr"]</p>
                 }
 
-                @Html.Label("Title", "Task Title")
+                @Html.Label("Title", "Titlu task")
                 <br />
                 @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
                 <br />
@@ -29,7 +31,7 @@
                 <br />
                 <br />
 
-                @Html.Label("Description", "Task Description")
+                @Html.Label("Description", "Descriere task")
                 <br />
                 @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
                 <br />
@@ -39,7 +41,7 @@
                 <br />
                 <input type="hidden" name="Status" value=@Model.Status />
 
-                @Html.Label("StartDate", "Task Start Date")
+                @Html.Label("StartDate", "Dată început task")
                 <br />
                 @Html.Editor("StartDate", new { htmlAttributes = new { @class = "form-control" } })
 
@@ -47,15 +49,15 @@
                 <br />
 
 
-                @Html.Label("EndDate", "Task End Date")
+                @Html.Label("EndDate", "Deadline task")
                 <br />
-                @Html.Editor("EndDate", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.Editor("Deadline", new { htmlAttributes = new { @class = "form-control" } })
 
                 <br />
                 <br />
                 @Html.ValidationSummary()
                 ;
-                <button class="btn btn-sm btn-success" type="submit">Update task</button>
+                <button class="btn btn-sm btn-success" type="submit">Actualizează</button>
 
             }
         </div>

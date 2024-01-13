@@ -21,13 +21,13 @@ namespace ProiectDAW.Data
         modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // definire primary key compus
+            // definire primary key compus (Member)
             modelBuilder.Entity<Member>()
             .HasKey(ac => new { 
                 ac.Id,
                 ac.UserId, 
                 ac.ProjectId });
-            // definire relatii cu modelele Category si Article (FK)
+            // definire relatii cu modelele User si Project (FK)
             modelBuilder.Entity<Member>()
             .HasOne(ac => ac.User)
             .WithMany(ac => ac.Members)
